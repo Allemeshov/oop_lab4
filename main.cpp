@@ -3,6 +3,7 @@
 #include "task1/student.h"
 #include "task1/human.h"
 #include "task2/visitors.h"
+#include "task3/text_worker.h"
 
 void task1() {
     auto h = new Human("Sasha", 19, Male);
@@ -56,7 +57,18 @@ void task2() {
  * Отсортировать массив строк по алфавиту. Учитывать только первый символ каждой строки
  * */
 void task3() {
+    auto tw = new TextWorker("input.txt");
+    tw->PortionUpperLowerCases();
 
+    std::cout << "Enter the symbol, periodicity of which to get: ";
+    char symbol;
+    symbol = (char) std::getchar();
+    std::cout << "This symbol repeats " << tw->GetPeriodicity(symbol) << " times." << std::endl;
+
+    std::cout << "The probability of appearing this symbol: " << tw->CalcSymbolProbability(symbol) << "%" << std::endl;
+
+    tw->SortLines();
+    tw->SaveLinesToFile("output.txt");
 }
 
 int main() {
